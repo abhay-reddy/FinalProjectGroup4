@@ -1,4 +1,4 @@
-# The Default tags
+# Default tags
 variable "default_tags" {
   default = {
     "Owner" = "Group4"
