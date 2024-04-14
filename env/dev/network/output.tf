@@ -1,5 +1,4 @@
 # for adding the output variables
-
 output "vpc_id" {
   value = module.vpc-dev.vpc_id
 }
