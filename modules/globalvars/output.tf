@@ -5,3 +5,7 @@ output "default_tags" {
     "App"   = "Web App"
  }
 }
+# Prefix to Identify Resouces.
+output "prefix" {
+  value     = "Group4"
+}

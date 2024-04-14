@@ -128,7 +128,7 @@ resource "aws_autoscaling_policy" "asg_scaleOutPolicy-prod" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "metric_alarm_scaleOut_prod" {
-    alarm_name = "deprodv-alarm-ScaleOut"
+    alarm_name = "prod-alarm-ScaleOut"
     comparison_operator = "GreaterThanOrEqualToThreshold"
     evaluation_periods = "1"
     metric_name = "MemoryUtilization"
