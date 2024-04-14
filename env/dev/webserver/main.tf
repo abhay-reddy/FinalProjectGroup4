@@ -33,7 +33,7 @@ resource "aws_lb" "alb" {
 
 # Load Balancer Listener Resource
 resource "aws_lb_listener" "dev_lb_listener" {
-  load_balancer_arn = aws_lb.app_load_balancer.id
+  load_balancer_arn = aws_lb.alb.id
   port              = "80"
   protocol          = "HTTP"
   default_action {
@@ -45,7 +45,7 @@ resource "aws_lb_listener" "dev_lb_listener" {
 # Load Balancer - Security Group
 resource "aws_security_group" "dev_lb_sg" {
   name        = "${local.name_prefix}-Allow_Http"
-  description = "Allow HTTP Inbound Traffic"
+  description = "To Allow HTTP Inbound Traffic"
   vpc_id      = data.terraform_remote_state.network.outputs.vpc_id
 
   ingress {
@@ -90,7 +90,7 @@ resource "aws_autoscaling_group" "asg" {
   desired_capacity     = 2
   max_size             = 4
   min_size             = 1
-  launch_configuration = aws_launch_configuration.dev_launch.config.name
+  launch_configuration = aws_launch_configuration.dev_launch_config.name
   vpc_zone_identifier  = [data.terraform_remote_state.network.outputs.private_subnet_id[0], data.terraform_remote_state.network.outputs.private_subnet_id[1], data.terraform_remote_state.network.outputs.private_subnet_id[2]]
   depends_on           = [aws_lb.alb]
   target_group_arns    = [aws_lb_target_group.dev_lb.arn]
@@ -229,7 +229,6 @@ data "terraform_remote_state" "network" {
     region = "us-east-1"
   }
 }
-
 
 # To retrieve the global variables from the file
 module "globalvars" {
