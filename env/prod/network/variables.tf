@@ -1,4 +1,4 @@
-# Default tags
+# Default tags of resources
 variable "default_tags" {
   default = {
     "Owner" = "Group4"
@@ -36,7 +36,7 @@ variable "vpc_cidr" {
   description = "Prod VPC to host the static website"
 }
 
-# Variable to signal the current environment 
+# Variable to signal the current deployment environment 
 variable "env" {
   default     = "prod"
   type        = string

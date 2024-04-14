@@ -1,4 +1,4 @@
-#Add output variables
+#for adding the output variables
 output "public_subnet_id" {
   value = module.vpc-prod.public_subnet_id
 }
