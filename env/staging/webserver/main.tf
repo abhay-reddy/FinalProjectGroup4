@@ -23,7 +23,7 @@ locals {
 data "terraform_remote_state" "network" {
   backend = "s3"
   config = {
-    bucket = "${var.env}1-group4"
+    bucket = "${var.env}-group4"
     key    = "${var.env}-network/terraform.tfstate"
     region = "us-east-1"
   }
@@ -39,7 +39,7 @@ resource "aws_lb_target_group" "staging_lb" {
 
 # Application Load Balancer
 resource "aws_lb" "alb" {
-  name                       = "${local.name_prefix}-Application-LoadBalancer"
+  name                       = "${local.name_prefix}-alb"
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.staging_lb_sg.id]
@@ -139,7 +139,7 @@ resource "aws_cloudwatch_metric_alarm" "metric_alarm_scaleOut_staging" {
   threshold           = "10"
   alarm_description   = "This metric monitors ec2 memory for high utilization for scaling"
   alarm_actions = [
-    "${aws_autoscaling_policy.asg_scaleOutPolicy-dev.arn}"
+    "${aws_autoscaling_policy.asg_scaleOutPolicy-staging.arn}"
   ]
   dimensions = {
     AutoScalingGroupName = "${aws_autoscaling_group.asg.name}"

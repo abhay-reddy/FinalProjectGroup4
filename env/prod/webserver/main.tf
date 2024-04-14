@@ -39,7 +39,7 @@ resource "aws_lb_target_group" "prod_lb" {
 
 # Application Load Balancer
 resource "aws_lb" "alb" {
-  name                       = "${local.name_prefix}-Application-LoadBalancer"
+  name                       = "${local.name_prefix}-alb"
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.prod_lb_sg.id]
