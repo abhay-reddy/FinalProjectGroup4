@@ -75,7 +75,7 @@ resource "aws_security_group" "dev_lb_sg" {
 # Launch Configuration Template
 resource "aws_launch_configuration" "dev_launch_config" {
   name                        = "${local.name_prefix}-Config"
-  image_id                    = "ami-0c02fb55956c7d316"
+  image_id                    = "ami-051f8a213df8bc089"
   instance_type               = var.type
   security_groups             = [aws_security_group.dev_lb_sg.id]
   key_name                    = aws_key_pair.acs_key.key_name
