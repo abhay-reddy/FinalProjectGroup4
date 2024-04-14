@@ -3,9 +3,9 @@ output "default_tags" {
   value = {
     "Owner" = "Group4"
     "App"   = "Web App"
- }
+  }
 }
 # Prefix to Identify Resouces.
 output "prefix" {
-  value     = "Group4"
+  value = "Group4"
 }

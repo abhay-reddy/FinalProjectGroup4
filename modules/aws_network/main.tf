@@ -30,26 +30,26 @@ resource "aws_vpc" "main" {
 
 # Adding Public Subnets
 resource "aws_subnet" "public_subnet" {
-  count             = length (var.public_cidr_blocks)
+  count             = length(var.public_cidr_blocks)
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.public_cidr_blocks[count.index]
-  availability_zone = data.aws_availability_zones.available.names[count.index+1]
+  availability_zone = data.aws_availability_zones.available.names[count.index + 1]
   tags = merge(
     local.default_tags, {
-      Name = "${local.name_prefix}-PublicSubnet${count.index+1}"
+      Name = "${local.name_prefix}-PublicSubnet${count.index + 1}"
     }
   )
 }
 
 # Adding Private Subnets
 resource "aws_subnet" "private_subnet" {
-  count             = length (var.private_cidr_blocks)
+  count             = length(var.private_cidr_blocks)
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.private_cidr_blocks[count.index]
-  availability_zone = data.aws_availability_zones.available.names[count.index+1]
+  availability_zone = data.aws_availability_zones.available.names[count.index + 1]
   tags = merge(
     local.default_tags, {
-      Name = "${local.name_prefix}-PrivateSubnet${count.index+1}"
+      Name = "${local.name_prefix}-PrivateSubnet${count.index + 1}"
     }
   )
 }
@@ -80,7 +80,7 @@ resource "aws_route_table" "public_route_table" {
 # Createing a NAT Gateway
 resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.nat-eip.id
-  subnet_id = aws_subnet.public_subnet[0].id
+  subnet_id     = aws_subnet.public_subnet[0].id
 
   tags = {
     Name = "${local.name_prefix}-NAT_GW"
@@ -111,13 +111,13 @@ resource "aws_route_table" "private_route_table" {
 
 # Associate subnets with the custom route table
 resource "aws_route_table_association" "public_route_table_association" {
-  count          = length (var.public_cidr_blocks)
+  count          = length(var.public_cidr_blocks)
   route_table_id = aws_route_table.public_route_table.id
   subnet_id      = aws_subnet.public_subnet[count.index].id
 }
 
 resource "aws_route_table_association" "private_route_table_association" {
-  count          = length (var.private_cidr_blocks)
+  count          = length(var.private_cidr_blocks)
   route_table_id = aws_route_table.private_route_table.id
   subnet_id      = aws_subnet.private_subnet[count.index].id
 }

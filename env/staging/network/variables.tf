@@ -19,7 +19,7 @@ variable "prefix" {
 variable "public_subnet_cidrs" {
   default     = ["10.200.1.0/24", "10.200.2.0/24", "10.200.3.0/24"]
   type        = list(string)
-  description = "Public Subnet CIDRs for Staging environment""
+  description = "Public Subnet CIDRs for Staging environment"
 }
 
 # Provisioning of Private Subnets in custom VPC
