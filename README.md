@@ -1,8 +1,8 @@
 # Group4-ACS730-Final Project: Two-Tier web application automation with Terraform
 
-In this final project, we will demonstrate how to deploy a two-tier web application in AWS environment using Terraform.
+In this final project, we will demonstrate how to deploy a two-tier web application in an AWS environment using Terraform.
 
-The below steps can be followed to use terraform code to deploy the infrastructure and install a static web app that return the web page along with images that are stored in S3 bucket of AWS.
+The below steps can be followed to use Terraform code to deploy the infrastructure and install a static web app that returns the web page along with images that are stored in the S3 bucket of AWS.
 
 Steps:
 1. Open the AWS comsole, create a Cloud9.
