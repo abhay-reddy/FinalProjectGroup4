@@ -33,12 +33,12 @@ Steps:
     ssh-keygen -t rsa -f "Group4-dev"
      ```
 10. Run the below commands to initialize, validate, plan and apply respectively. This will deploy the EC2 instance and insatll webserver.
-  ```
+    ```
     terraform init
     terraform validate
     terraform plan
     terrafrom apply --auto-approve
-  ```
+    ```
 11.This will return a Load Balancer DNS name, this can be used to access the web app
 12. Navigate to the env/staging/network and repeat step 8, then step 9 in env/staging/webserver
 13. Repeat the step 9 and 10 in prod directory aswell.
