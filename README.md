@@ -7,20 +7,20 @@ The below steps can be followed to use terraform code to deploy the infrastructu
 Steps:
 1. Open the AWS comsole, create a Cloud9.
 2. Clone this github repo using the command
-      ```git clone https://github.com/abhay-reddy/FinalProjectGroup4.git"   ```
+   ```git clone https://github.com/abhay-reddy/FinalProjectGroup4.git"   ```
 3. Create three S3 buckets with names "group4-dev". "group4-staging" and "group4-prod" for three different environments.
 4. Create an S3 bucket by unchecking the "block public access" with name "web-images-acs730" and upload required images to it. Also provide necessory permissions to make the images accessinle to AWS env.
 5. Use the image URLs inside the install_httpd script
 6. In the Cloud9, install the terraform using below:
-   ```
+    ```
     sudo yum install -y yum-utils shadow-utils
     sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
     sudo yum -y install terraform
-   ```
+    ```
 7. Navigate to the modules/globalvars and perform
      ```
     terraform apply
-       ```
+     ```
 8. Now, go to the env/dev/network and use below commands to initialize, validate, plan and apply respectively. This will deploy the network part of the application.
     ```
     terraform init
